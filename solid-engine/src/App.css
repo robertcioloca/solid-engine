@@ -1,21 +1,26 @@
-.App {
+.app {
   text-align: center;
+  --red: 230;
+  --green: 230;
+  --blue: 230;
+  --aa-brightness: calc((
+        (var(--red) * 299) +
+        (var(--green) * 587) +
+        (var(--blue) * 114)
+    ) / 1000);
+    --aa-brightness: calc((
+    (var(--red) * 299) +
+    (var(--green) * 587) +
+    (var(--blue) * 114)
+  ) / 1000);
+  --aa-color: calc((var(--aa-brightness) - 128) * -1000);
+  background: rgb(var(--red), var(--green), var(--blue));
+  color: rgb(var(--aa-color), var(--aa-color), var(--aa-color));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.app-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +29,47 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+.flex-4 {
+  flex: 4;
+}
+.flex-5 {
+  flex: 5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chapters {
+  padding: 0 20px;
+}
+.chapter h3 {
+  font-size: 1.75em;
+  line-height: calc(1ex / 0.38);
+  margin: calc(1ex / 0.38) 0;
+}
+.chapter p {
+  width: 60ch;
+  max-width: 100%;
+  hyphens: auto;
+  text-align: justify;
+  font-size: 1em;
+  line-height: calc(1ex / 0.32);
+  margin: calc(1ex / 0.32) 0;
 }
