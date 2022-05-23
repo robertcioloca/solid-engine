@@ -48,7 +48,7 @@ export default class Navigation extends React.Component {
     <div className="navigation">
       <ul className="navigation-list">
         {metaData.chapters.map((ch: MetaDataModelChaper) =>
-          <li>{ch.number}</li>
+          <li key={ch.number}>{ch.number}</li>
         )}
       </ul>
     </div>
