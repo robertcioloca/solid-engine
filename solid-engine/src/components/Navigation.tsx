@@ -4,6 +4,7 @@ import { MetaDataModel, MetaDataModelChaper } from '../models/MetaData';
 
 interface State {
   metaData: MetaDataModel;
+  toggled: boolean;
 }
 
 export default class Navigation extends React.Component {
@@ -12,10 +13,15 @@ export default class Navigation extends React.Component {
       title: '',
       chapters: [],
     },
+    toggled: false,
   };
 
+  constructor(props: any) {
+    super(props);
+    this.toggleNav = this.toggleNav.bind(this);
+  }
+
   async componentDidMount(): Promise<void> {
-    console.log('testing');
     async function loadMetaData(): Promise<MetaDataModel> {
       const resp = await fetch('./content/metadata.json', {
         headers,
@@ -37,21 +43,37 @@ export default class Navigation extends React.Component {
 
     try {
       const metaData = await loadMetaData();
-      this.setState({metaData});
+      this.setState({ metaData });
     } catch (err: any) {
       console.error(err);
     }
+  }
+
+  private toggleNav(): void {
+    this.setState((prevState: Readonly<State>) => ({
+      toggled: !prevState.toggled,
+    }));
+    console.log(this.state.toggled);
   }
 
   render() {
     const { metaData } = this.state;
     return (
     <div className="navigation">
-      <ul className="navigation-list">
-        {metaData.chapters.map((ch: MetaDataModelChaper) =>
-          <li key={ch.number}>{ch.number}</li>
-        )}
-      </ul>
+      <button
+        type="button"
+        className={this.state.toggled ? 'navigation-toggle-button show': 'navigation-toggle-button'}
+        onClick={this.toggleNav}
+      >
+        <span>&#xab;</span>
+      </button>
+      <div className={this.state.toggled ? 'navigation-list-container show': 'navigation-list-container'}>
+        <ul className="navigation-list">
+          {metaData.chapters.map((ch: MetaDataModelChaper) =>
+            <li key={ch.number}>{ch.number}</li>
+          )}
+        </ul>
+      </div>
     </div>
     );
   }
