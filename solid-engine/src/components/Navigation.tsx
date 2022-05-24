@@ -15,6 +15,7 @@ export default class Navigation extends React.Component {
   };
 
   async componentDidMount(): Promise<void> {
+    console.log('testing');
     async function loadMetaData(): Promise<MetaDataModel> {
       const resp = await fetch('./content/metadata.json', {
         headers,
