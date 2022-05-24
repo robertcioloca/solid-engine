@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Chapter from '../models/Chapter';
+import ChapterModel from '../models/Chapter';
 
-export default class ChapterComponent extends React.Component<Chapter, {}> {
+export default class Chapter extends React.Component<ChapterModel, {}> {
   render() {
     return (  
     <div className="chapter">

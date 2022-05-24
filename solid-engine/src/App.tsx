@@ -1,4 +1,5 @@
-import ChaptersComponent from './components/ChaptersComponent';
+import Chapters from './components/Chapters';
+import Navigation from './components/Navigation';
 import './App.css';
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
       <header className="app-header">
         Header placeholder
       </header>
-      <ChaptersComponent />
+      <Chapters />
+      <Navigation />
     </div>
   );
 }

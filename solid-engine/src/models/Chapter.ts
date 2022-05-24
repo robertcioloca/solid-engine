@@ -1,4 +1,4 @@
-export default interface Chapter {
+export default interface ChapterModel {
   number: number;
   content: string;
 }
